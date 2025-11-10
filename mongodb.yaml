@@ -1,6 +1,10 @@
 version: "3.8"
 
 services:
+  my-app:
+    image: dharmakhadka/testapp
+    ports:
+    - 5050:5050
   mongo:
     image: mongo
     ports:
