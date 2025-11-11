@@ -1,10 +1,16 @@
-FROM node
+FROM node:18
 
 ENV MONGO_DB_USERNAME=dharma \
-    MONGO_DO_PWD=dharma
+    MONGO_DB_PWD=dharma
 
-RUN mkdir -p testapp
+WORKDIR /testapp
 
-COPY . /testapp
+COPY package*.json ./
 
-CMD ["node", "/testapp/server.js"]
+RUN npm install --production
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
