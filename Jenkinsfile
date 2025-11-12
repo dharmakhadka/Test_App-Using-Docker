@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        nodejs 'nodejs-build'
+        nodejs 'my-nodejs'
     }
     stages{
         stage("Building Artifact"){
