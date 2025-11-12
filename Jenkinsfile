@@ -17,7 +17,7 @@ pipeline{
             steps{
                 script{
                     echo 'Building the Docker image'
-                    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    withCredentials([usernamePassword(credentialsId: 'DockerHub-Account', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                         sh 'docker build -t dharmakhadka/testapp:nodejs_app_1.2 .'
                         sh 'echo $PASS | docker login -u $USER --password-stdin'
                         sh 'docker push dharmakhadka/testapp:nodejs_app_1.2'
