@@ -1,11 +1,11 @@
 pipeline{
     agent any
     tools{
-        nodejs 'NodeJS 25.1.0'
+        nodejs 'nodejs-build'
     }
     stages{
         stage("Building Artifact"){
-            setps {
+            steps {
                 script {
                     echo 'Building the Arifact File'
                     sh 'npm install'
@@ -14,7 +14,7 @@ pipeline{
             }
         }
         stage("Building & Pushing the Artifact into DockerHub"){
-            setps{
+            steps{
                 script{
                     echo 'Building the Docker image'
                     withCredentials([usernamePassword(credentialID: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
