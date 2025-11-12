@@ -39,8 +39,9 @@ pipeline{
         ok "Done"
         parameters {
         choice(name: 'ENV', choices: ['Stage', 'Dev'], description:'')
+        }
       }
-      steps{
+      steps {
         script {
           gv.deployapp()
           echo "Deploying into the ${ENV} environment."
@@ -49,4 +50,4 @@ pipeline{
     }
   }
 }
-}
+
